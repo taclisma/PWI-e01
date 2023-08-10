@@ -45,13 +45,24 @@ public class Teste1 {
 					System.out.println("erro: " + e);
 				}
 				break;
+				
+				
 			case 2:
 				System.out.println("Pesquisar Cliente Pessoa Física pelo nome");
-				Menu.buscaClientePeloNome(clientes);
+				try {
+					Menu.buscaClientePeloNome(clientes);
+				} catch (Exception e){
+					System.out.println("Erro: " + e);
+				}
+
 				break;
+				
+				
 			case 3:
 				System.out.println("Pesquisar Cliente Pessoa Física pelo CPF");
 				break;
+				
+				
 			case 4:
 				System.out.println("Pesquisar Cliente Pessoa Física pelo Endereço");
 				break;

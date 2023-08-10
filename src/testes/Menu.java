@@ -47,7 +47,7 @@ public class Menu {
 				new ClientePessoaFisica(telefoneAux, enderecosAux, nomeAux, 
 										new Cpf( Long.parseLong(aux2[0]), Integer.parseInt(aux2[1])) 
 																 );
-		
+		System.out.println("cliente " + nomeAux + " cadastrado");
 		return clienteAux;
 	}
 	
@@ -83,9 +83,14 @@ public class Menu {
 		System.out.println("cep?");
 		cep = teclado.nextLong(); teclado.nextLine();
 		
-		Endereco endereco = new Endereco(logradouro, complemento, cep);
+		try {
+			Endereco endereco = new Endereco(logradouro, complemento, cep);			
+			return endereco;
+		} catch (Exception e) {
+			System.out.println("não foi possivel cadastrar esse endereço (" + e + ")");
+			return null;
+		}
 		
-		return endereco;
 	}
 
 	
@@ -99,6 +104,7 @@ public class Menu {
 	private static String busca(String nomeBusca, List<ClientePessoaFisica> clientes) {
 		for (ClientePessoaFisica cliente : clientes) {
 			if (nomeBusca.equalsIgnoreCase(cliente.getNome())) {
+				System.out.println("cliente encontrado: ");
 				return cliente.toString();				
 			}
 		}
